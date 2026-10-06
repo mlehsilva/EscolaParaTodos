@@ -1,0 +1,125 @@
+/* ==========================================================================
+   1. MOTOR DE TAMANHO DE FONTE (FONT SCALING)
+   ========================================================================== */
+
+/* Fonte Grande */
+body.font-large {
+    --tamanho-base: 22px;
+}
+body.font-large .card-texto {
+    font-size: 1.4rem;
+}
+body.font-large .container-modal h2 {
+    font-size: 2.2rem;
+}
+
+/* Fonte Muito Grande */
+body.font-xlarge {
+    --tamanho-base: 26px;
+}
+body.font-xlarge .card-texto {
+    font-size: 1.6rem;
+}
+body.font-xlarge header h1 {
+    font-size: 3.2rem;
+}
+
+
+/* ==========================================================================
+   2. MODO ALTO CONTRASTE (WCAG AAA Compliance)
+   ========================================================================== */
+body.high-contrast {
+    --cor-primaria: #000000;       /* Fundo Preto */
+    --cor-secundaria: #FFFF00;     /* Texto Amarelo Vivo */
+    --cor-fundo: #000000;          /* Fundo Geral Preto */
+    --cor-superficie: #121212;     /* Cards em grafite quase preto */
+    --cor-texto: #FFFFFF;          /* Texto Correndo em Branco Puro */
+    --cor-alerta: #FF3333;         /* Vermelho mais saturado para visibilidade */
+}
+
+/* Ajustes finos para o Alto Contraste não perder divisões visuais */
+body.high-contrast .card-link {
+    border: 3px solid #FFFF00 !important;
+    background-color: #000000;
+}
+
+body.high-contrast .card-link:hover,
+body.high-contrast .card-link:focus-visible {
+    background-color: #FFFF00;
+    color: #000000 !important;
+}
+
+body.high-contrast .card-link:hover .card-texto,
+body.high-contrast .card-link:focus-visible .card-texto {
+    color: #000000;
+}
+
+body.high-contrast .btn-opcao {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+body.high-contrast .btn-opcao:hover,
+body.high-contrast .btn-opcao:focus-visible {
+    background-color: #FFFF00;
+    color: #000000;
+    border-color: #FFFF00;
+}
+
+body.high-contrast .btn-padrao {
+    background-color: #FFFF00;
+    color: #000000;
+    border: 2px solid #FFFF00;
+}
+
+body.high-contrast .frase-impacto {
+    border-left: 6px solid #FFFF00;
+    background-color: #121212;
+    color: #FFFFFF;
+}
+
+body.high-contrast #boas-vindas-acessivel {
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+body.high-contrast .container-modal {
+    border: 4px solid #FFFF00;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+body.high-contrast .container-modal h2 {
+    color: #FFFF00;
+}
+
+
+/* ==========================================================================
+   3. MODO DALTONISMO (Foco em Padrões Visuais)
+   ========================================================================== */
+body.daltonismo-mode {
+    /* Ajustes cromáticos para priorizar Azul/Amarelo */
+    --cor-alerta: #E65100; /* Laranja forte substitui o vermelho, mais visível */
+}
+
+/* Garante sublinhado automático em links de texto para não depender da cor */
+body.daltonismo-mode a {
+    text-decoration: underline;
+}
+
+/* Adiciona bordas texturizadas ou pontilhadas em alertas para identificação rápida */
+body.daltonismo-mode .card-alerta {
+    border: 3px dashed var(--cor-alerta) !important;
+}
+
+
+/* ==========================================================================
+   4. MODIFICADORES DE SUPORTE (Animações e Transições)
+   ========================================================================== */
+/* Se o usuário tiver sensibilidade a movimentos, desativa transições */
+body.reduzir-movimento * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+}

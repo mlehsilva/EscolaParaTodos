@@ -23,20 +23,21 @@ function configurarModo(modo) {
             MotorVisual.alterarContraste(true);
             MotorVisual.alterarFonte('xlarge');
             // Proativamente avisa que o motor de áudio está ativo
-            setTimeout(() => { MotorAudio.falar("Modo deficiência visual ativado. Navegue utilizando a tecla Tab."); }, 500);
+            setTimeout(() => { 
+                MotorAudio.falar("Modo deficiência visual ativado. Navegue utilizando a tecla Tab."); 
+            }, 500);
             break;
         case 'deficiencia-auditiva':
-            // Prioriza alertas visuais (já tratados de forma nativa no CSS/HTML sem movimento)
+            // Tratado nativamente nas folhas de estilo
             break;
         default:
-            // Modo padrão, nenhuma ação visual extra necessária
             break;
     }
 
     // Salva no navegador que o usuário já escolheu uma configuração
     localStorage.setItem("escola_acessivel_modo", modo);
     
-    // Oculta o painel de entrada com transição visual simples
+    // Oculta o painel de entrada
     if (painelBoasVindas) {
         painelBoasVindas.style.display = "none";
     }
@@ -49,15 +50,8 @@ function verificarPreferencia() {
     const modoSalvo = localStorage.getItem("escola_acessivel_modo");
     const painelBoasVindas = document.getElementById("boas-vindas-acessivel");
 
+    // Se o usuário já selecionou um modo antes, pula o painel de boas-vindas
     if (modoSalvo && painelBoasVindas) {
-        // Se já escolheu antes, aplica o modo salvo e pula a tela de introdução
         painelBoasVindas.style.display = "none";
-        // Restaura as classes visuais baseadas no histórico
-        if (modoSalvo === 'baixa-visao' || modoSalvo === 'deficiencia-visual') {
-            MotorVisual.alterarContraste(true);
-            MotorVisual.alterarFonte(modoSalvo === 'baixa-visao' ? 'large' : 'xlarge');
-        } else if (modoSalvo === 'daltonismo') {
-            MotorVisual.alternarDaltonismo(true);
-        }
     }
 }

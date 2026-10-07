@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conheça a Escola - Escola para Todos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <style>
+        .grade-locais {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .card-local {
+            background-color: var(--cor-superficie);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-left: 6px solid var(--cor-primaria);
+        }
+        .topo-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ECEFF1;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .titulo-local {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            color: var(--cor-primaria);
+        }
+        .btn-ouvir-local {
+            background-color: #ECEFF1;
+            color: var(--cor-primaria);
+            border: 2px solid #CFD8DC;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-ouvir-local:hover {
+            background-color: var(--cor-primaria);
+            color: white;
+            border-color: var(--cor-primaria);
+        }
+        .info-linha {
+            margin-bottom: 8px;
+        }
+        .tag-rampa {
+            display: inline-block;
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        /* Ajuste fino para Alto Contraste */
+        body.high-contrast .card-local {
+            border: 3px solid #FFFF00 !important;
+            background-color: #000000;
+        }
+        body.high-contrast .titulo-local { color: #FFFF00; }
+        body.high-contrast .btn-ouvir-local {
+            background-color: #000000;
+            color: #FFFF00;
+            border: 2px solid #FFFF00;
+        }
+        body.high-contrast .btn-ouvir-local:hover {
+            background-color: #FFFF00;
+            color: #000000;
+        }
+        body.high-contrast .tag-rampa {
+            background-color: #FFFF00;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#conteudo-locais" class="sr-only-focusable">Saltar para a lista de locais</a>
+
+    <nav class="container" style="padding: 15px 20px;" aria-label="Navegação secundária">
+        <a href="../index.html" style="text-decoration: none; font-weight: bold; color: var(--cor-primaria); display: inline-flex; align-items: center; gap: 5px;">
+            ⬅️ Voltar para a Página Inicial
+        </a>
+    </nav>
+
+    <header role="banner">
+        <div class="container">
+            <h1>Conheça os Espaços da Escola</h1>
+            <p class="subtitulo">Consulte a localização, horários e acessibilidade das nossas dependências.</p>
+        </div>
+    </header>
+
+    <main id="conteudo-locais" role="main" class="container">
+        
+        <!-- Contêiner onde o JavaScript vai injetar os cards automaticamente -->
+        <div id="container-grade-locais" class="grade-locais"></div>
+
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2026 Escola para Todos. Projeto de Inclusão Escolar.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts do Sistema -->
+    <script src="../js/escola.js"></script>
+    <script src="../js/motorVisual.js"></script>
+    <script src="../js/audio.js"></script>
+
+    <!-- Script de Renderização Dinâmica e Leitura Inteligente -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("container-grade-locais");
+            
+            // Loop para criar a estrutura HTML de cada local dinamicamente
+            DADOS_ESCOLA.forEach(local => {
+                const card = document.createElement("section");
+                card.className = "card-local";
+                card.setAttribute("aria-labelledby", `titulo-${local.id}`);
+                
+                card.innerHTML = `
+                    <div class="topo-card">
+                        <h2 id="titulo-${local.id}" class="titulo-local">
+                            <span>${local.icone}</span> ${local.nome}
+                        </h2>
+                        <button class="btn-ouvir-local" onclick="ouvirLocalCompleto('${local.id}')" aria-label="Ouvir descrição completa do espaço: ${local.nome}">
+                            🔊 Ouvir descrição
+                        </button>
+                    </div>
+                    <div id="texto-${local.id}">
+                        <p class="info-linha">📍 <strong>Localização:</strong> ${local.localizacao}</p>
+                        <p class="info-linha">⏰ <strong>Horário de Funcionamento:</strong> ${local.horario}</p>
+                        <p class="info-linha">ℹ️ <strong>${local.info_extra_titulo}</strong> ${local.info_extra_conteudo}</p>
+                        <p class="info-linha">♿ <strong>Acessibilidade Física:</strong> ${local.detalhes_acesso}</p>
+                        ${local.rampa ? `<span class="tag-rampa">♿ Possui Acesso por Rampa</span>` : ''}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+
+        /**
+         * Monta uma frase fluida e natural para o sintetizador de voz ler sem gaguejar nas tags textuais
+         */
+        function ouvirLocalCompleto(id) {
+            const local = DADOS_ESCOLA.find(l => l.id === id);
+            if (local) {
+                const textoParaLer = `
+                    Espaço: ${local.nome}. 
+                    Localização: ${local.localizacao} 
+                    Horário de Funcionamento: ${local.horario} 
+                    ${local.info_extra_titulo} ${local.info_extra_conteudo} 
+                    Acessibilidade Física: ${local.detalhes_acesso}
+                `;
+                MotorAudio.falar(textoParaLer);
+            }
+        }
+    </script>
+</body>
+</html>

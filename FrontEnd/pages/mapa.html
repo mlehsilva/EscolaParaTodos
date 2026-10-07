@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Acessível - Escola para Todos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+    <style>
+        /* Estilos locais específicos para a interatividade do mapa */
+        .bloco-mapa {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        @media (max-width: 850px) {
+            .bloco-mapa { grid-template-columns: 1fr; }
+        }
+        .visual-mapa {
+            background-color: var(--cor-superficie);
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .visual-mapa img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .lista-locais {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .btn-local {
+            background-color: var(--cor-superficie);
+            border: 2px solid #CFD8DC;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        .btn-local:hover, .btn-local:focus-visible {
+            border-color: var(--cor-primaria);
+            background-color: #E3F2FD;
+        }
+        .painel-detalhes {
+            background-color: var(--cor-superficie);
+            border: 3px solid var(--cor-primaria);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            display: none; /* Inicialmente oculto, aparece ao selecionar um local */
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#conteudo-mapa" class="sr-only-focusable">Saltar para o mapa e lista de locais</a>
+
+    <header role="banner">
+        <div class="container">
+            <h1>Mapa Acessível da Escola</h1>
+            <p class="subtitulo">Explore os blocos, salas e recursos de infraestrutura disponíveis.</p>
+        </div>
+    </header>
+
+    <main id="conteudo-mapa" role="main" class="container">
+        
+        <!-- Botão de Voltar para a Home -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html" class="btn-opcao" style="display: inline-flex; width: auto; padding: 10px 20px;">
+                ⬅️ Voltar ao Início
+            </a>
+        </div>
+
+        <div class="bloco-mapa">
+            <!-- Coluna Esquerda: Imagem do Mapa Interativo (Alternativa Visual) -->
+            <section class="visual-mapa" aria-label="Representação visual da escola">
+                <!-- Imagem com alt vazio porque a descrição rica e textual está logo ao lado, evitando redundância de leitura para o leitor de telas -->
+                <img src="../assets/img/mapa-escola.png" alt="Mapa esquemático simplificado mostrando os blocos de A a D da instituição escolar.">
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">Selecione um local na lista ao lado para ver os detalhes e rotas acessíveis.</p>
+            </section>
+
+            <!-- Coluna Direita: Navegação por Teclado e Voz dos Ambientes -->
+            <section aria-label="Lista de ambientes disponíveis">
+                <h2>Selecione o espaço que deseja explorar:</h2>
+                <br>
+                <div class="lista-locais">
+                    <button onclick="selecionarLocal('biblioteca')" class="btn-local">
+                        <strong>📚 Biblioteca Central</strong><br>
+                        <span style="font-size: 0.9rem; color: #555;">Bloco A - Andar Térreo</span>
+                    </button>
+
+                    <button onclick="selecionarLocal('laboratorio')" class="btn-local">
+                        <strong>💻 Laboratório de Informática 1</strong><br>
+                        <span style="font-size: 0.9rem; color: #555;">Bloco C - 1º Andar (Acesso por Elevador)</span>
+                    </button>
+
+                    <button onclick="selecionarLocal('secretaria')" class="btn-local">
+                        <strong>🏢 Secretaria Escolar e Recepção</strong><br>
+                        <span style="font-size: 0.9rem; color: #555;">Bloco Principal - Entrada Térrea</span>
+                    </button>
+
+                    <button onclick="selecionarLocal('quadra')" class="btn-local">
+                        <strong>⚽ Quadra Poliesportiva</strong><br>
+                        <span style="font-size: 0.9rem; color: #555;">Área Externa - Rampa de Acesso Lateral</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Seção Dinâmica de Detalhes Avançados do Espaço Selecionado -->
+        <section id="painel-info" class="painel-detalhes" aria-live="polite">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                <h3 id="nome-local-selecionado" style="font-size: 1.8rem; color: var(--cor-primaria);">Nome do Local</h3>
+                <button onclick="ouvirLocalAtual()" class="btn-opcao" style="width: auto; padding: 10px 15px;">
+                    🔊 Ouvir Descrição e Rota
+                </button>
+            </div>
+            
+            <div id="texto-detalhes-local">
+                <!-- Injetado dinamicamente via mapa.js -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2026 Escola para Todos. Projeto de Inclusão Escolar.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts fundamentais -->
+    <script src="../js/audio.js"></script>
+    <script src="../js/motorVisual.js"></script>
+    <script src="../js/mapa.js"></script>
+</body>
+</html>

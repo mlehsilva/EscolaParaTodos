@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preciso de Ajuda - Escola para Todos</title>
+    <!-- Links apontando corretamente para as pastas de estilo na raiz -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Atalho de teclado para pular direto para o conteúdo de ajuda -->
+    <a href="#central-ajuda" class="sr-only-focusable">Saltar para os contatos de ajuda</a>
+
+    <header role="banner">
+        <div class="container">
+            <h1>Central de Ajuda e Contatos</h1>
+            <p class="subtitulo">Precisa de suporte ou orientação presencial? Entre em contato conosco.</p>
+        </div>
+    </header>
+
+    <main id="central-ajuda" role="main" class="container">
+        
+        <!-- Botão para retornar à página inicial -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html" class="btn-opcao" style="display: inline-flex; width: auto; padding: 10px 20px;">
+                ⬅️ Voltar ao Início
+            </a>
+        </div>
+
+        <!-- Seção: Informações de Secretaria e Atendimento -->
+        <section class="container-modal" style="max-width: 100%; text-align: left; margin-bottom: 25px;" aria-labelledby="titulo-secretaria">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                <h2 id="titulo-secretaria" style="color: var(--cor-primaria);">🏢 Secretaria e Atendimento Geral</h2>
+                <button onclick="MotorAudio.lerElemento('info-secretaria')" class="btn-opcao" style="width: auto; padding: 10px 15px;" aria-label="Ouvir contatos da secretaria">
+                    🔊 Ouvir Contatos
+                </button>
+            </div>
+            
+            <div id="info-secretaria">
+                <p style="margin-bottom: 10px;">Para dúvidas sobre matrículas, carteirinhas de estudante ou documentos oficiais:</p>
+                <ul style="list-style-position: inside; margin-bottom: 15px; line-height: 1.8;">
+                    <li><strong>📞 Telefone Fixo:</strong> (11) 5555-1234</li>
+                    <li><strong>📱 WhatsApp Institucional:</strong> (11) 98888-5678 (Apenas mensagens de texto ou áudio)</li>
+                    <li><strong>📧 E-mail:</strong> secretaria@escola.edu.br</li>
+                    <li><strong>⏰ Horário de Funcionamento:</strong> Segunda a Sexta, das 07h às 22h.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção: Núcleo de Apoio à Inclusão (Acessibilidade) -->
+        <section class="container-modal card-alerta" style="max-width: 100%; text-align: left; margin-bottom: 25px; border-left: 6px solid var(--cor-primaria);" aria-labelledby="titulo-nai">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                <h2 id="titulo-nai" style="color: var(--cor-texto);">♿ Núcleo de Apoio à Inclusão (NAI)</h2>
+                <button onclick="MotorAudio.lerElemento('info-nai')" class="btn-opcao" style="width: auto; padding: 10px 15px;" aria-label="Ouvir contatos do núcleo de apoio à inclusão">
+                    🔊 Ouvir Contatos
+                </button>
+            </div>
+            
+            <div id="info-nai">
+                <p style="margin-bottom: 10px;">Caso precise de auxílio de ledor, intérprete de Libras, materiais em Braille ou suporte de locomoção física pelo espaço escolar:</p>
+                <ul style="list-style-position: inside; margin-bottom: 15px; line-height: 1.8;">
+                    <li><strong>📞 Ramal Interno:</strong> Disque 202 a partir de qualquer telefone da escola.</li>
+                    <li><strong>📧 E-mail de Suporte:</strong> inclusao@escola.edu.br</li>
+                    <li><strong>📍 Localização Física:</strong> Bloco Principal, Sala 104 (Próximo à rampa de acesso interna).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção: Suporte Técnico à Plataforma -->
+        <section class="container-modal" style="max-width: 100%; text-align: left;" aria-labelledby="titulo-suporte">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                <h2 id="titulo-suporte" style="color: var(--cor-primaria);">🛠️ Suporte Técnico da Plataforma Web</h2>
+                <button onclick="MotorAudio.lerElemento('info-suporte')" class="btn-opcao" style="width: auto; padding: 10px 15px;" aria-label="Ouvir contatos do suporte técnico">
+                    🔊 Ouvir Suporte
+                </button>
+            </div>
+            
+            <div id="info-suporte">
+                <p style="margin-bottom: 10px;">Encontrou algum erro de acessibilidade, bug ou leitor de tela que não funciona neste site? Avise nossa equipe de TI:</p>
+                <ul style="list-style-position: inside; line-height: 1.8;">
+                    <li><strong>📧 E-mail:</strong> suporte.plataforma@escola.edu.br</li>
+                    <li><strong>💬 Canal Aberto:</strong> Atendimento presencial nos Laboratórios de Informática com os integrantes do projeto.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2026 Escola para Todos. Projeto de Inclusão Escolar.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts para garantir o funcionamento do motor de áudio e visual de acessibilidade -->
+    <script src="../js/audio.js"></script>
+    <script src="../js/motorVisual.js"></script>
+</body>
+</html>

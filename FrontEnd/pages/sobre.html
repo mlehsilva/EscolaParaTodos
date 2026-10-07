@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Projeto - Escola para Todos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+    <style>
+        .grade-equipe {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card-integrante {
+            background-color: var(--cor-superficie);
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .secao-sobre {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#conteudo-sobre" class="sr-only-focusable">Saltar para a história do projeto</a>
+
+    <header role="banner">
+        <div class="container">
+            <h1>Sobre o Escola para Todos</h1>
+            <p class="subtitulo">Conheça a iniciativa, o problema identificado e a equipe de desenvolvimento.</p>
+        </div>
+    </header>
+
+    <main id="conteudo-sobre" role="main" class="container">
+        
+        <!-- Botão de Voltar para a Home -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html" class="btn-opcao" style="display: inline-flex; width: auto; padding: 10px 20px;">
+                ⬅️ Voltar ao Início
+            </a>
+        </div>
+
+        <!-- SEÇÃO 1: O Projeto -->
+        <section class="secao-sobre" aria-labelledby="titulo-historia">
+            <div class="container-modal" style="max-width: 100%; text-align: left;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                    <h2 id="titulo-historia" style="color: var(--cor-primaria);">💡 A Nossa Proposta</h2>
+                    <button onclick="MotorAudio.lerElemento('texto-historia')" class="btn-opcao" style="width: auto; padding: 10px 15px;" aria-label="Ouvir a proposta do projeto">
+                        🔊 Ouvir Texto
+                    </button>
+                </div>
+                <div id="texto-historia">
+                    <p style="margin-bottom: 15px;">O projeto foi desenvolvido dentro da proposta pedagógica <strong>“Inclusão que Transforma – Da Ideia ao Protótipo”</strong>, combinando conceitos modernos de desenvolvimento de sistemas e metodologias ágeis de gerenciamento.</p>
+                    <p>Identificamos que muitas pessoas com baixa visão, daltonismo ou restrições auditivas enfrentam barreiras severas ao tentar consumir informativos escolares básicos ou se localizar dentro das instituições. O <strong>Escola para Todos</strong> nasceu para provar que a tecnologia pode quebrar essas barreiras físicas e digitais de forma simultânea.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: A Equipe -->
+        <section class="secao-sobre" aria-labelledby="titulo-equipe">
+            <h2 id="titulo-equipe" style="margin-bottom: 10px;">👥 Equipe de Desenvolvimento</h2>
+            <p>Estudantes do curso de Desenvolvimento de Sistemas focados em criar soluções digitais inclusivas.</p>
+            
+            <div class="grade-equipe">
+                
+                <!-- INTEGRANTE 1 -->
+                <article class="card-integrante" aria-labelledby="nome-int-1">
+                    <h3 id="nome-int-1">Integrante 1</h3>
+                    <p style="color: var(--cor-primaria); font-weight: bold; font-size: 0.9rem; margin-bottom: 10px;">Desenvolvedor Front-End</p>
+                    <div id="desc-int-1" style="margin-bottom: 15px; font-size: 0.95rem;">
+                        Responsável pela estruturação do HTML semântico do portal e pela garantia da ordem correta do foco do teclado.
+                    </div>
+                    <button onclick="MotorAudio.lerElemento('desc-int-1')" class="btn-opcao" style="width: auto; padding: 8px 12px; font-size: 0.9rem;" aria-label="Ouvir atribuições do Integrante 1">
+                        🔊 Ouvir Função
+                    </button>
+                </article>
+
+                <!-- INTEGRANTE 2 -->
+                <article class="card-integrante" aria-labelledby="nome-int-2">
+                    <h3 id="nome-int-2">Integrante 2</h3>
+                    <p style="color: var(--cor-primaria); font-weight: bold; font-size: 0.9rem; margin-bottom: 10px;">Engenheiro de Acessibilidade (QA)</p>
+                    <div id="desc-int-2" style="margin-bottom: 15px; font-size: 0.95rem;">
+                        Responsável pela aplicação dos padrões WCAG, testes de contraste visual do CSS e validação com leitores de tela externos.
+                    </div>
+                    <button onclick="MotorAudio.lerElemento('desc-int-2')" class="btn-opcao" style="width: auto; padding: 8px 12px; font-size: 0.9rem;" aria-label="Ouvir atribuições do Integrante 2">
+                        🔊 Ouvir Função
+                    </button>
+                </article>
+
+                <!-- INTEGRANTE 3 -->
+                <article class="card-integrante" aria-labelledby="nome-int-3">
+                    <h3 id="nome-int-3">Integrante 3</h3>
+                    <p style="color: var(--cor-primaria); font-weight: bold; font-size: 0.9rem; margin-bottom: 10px;">Desenvolvedor JavaScript</p>
+                    <div id="desc-int-3" style="margin-bottom: 15px; font-size: 0.95rem;">
+                        Responsável por programar as lógicas dos motores de áudio, persistência com localStorage e filtros da busca.
+                    </div>
+                    <button onclick="MotorAudio.lerElemento('desc-int-3')" class="btn-opcao" style="width: auto; padding: 8px 12px; font-size: 0.9rem;" aria-label="Ouvir atribuições do Integrante 3">
+                        🔊 Ouvir Função
+                    </button>
+                </article>
+
+                <!-- Adicione mais blocos de integrantes conforme a necessidade do seu grupo (Integrante 4, 5, 6...) -->
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2026 Escola para Todos. Projeto de Inclusão Escolar.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts necessários -->
+    <script src="../js/audio.js"></script>
+    <script src="../js/motorVisual.js"></script>
+</body>
+</html>

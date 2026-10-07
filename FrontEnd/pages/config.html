@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalizar Acessibilidade - Escola para Todos</title>
+    <!-- Voltando um nível de pasta para acessar o CSS corretamente -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <a href="#configuracoes" class="sr-only-focusable">Saltar para os controles de acessibilidade</a>
+
+    <header role="banner">
+        <div class="container">
+            <h1>Painel de Acessibilidade</h1>
+            <p class="subtitulo">Ajuste as ferramentas visuais e sonoras do portal.</p>
+        </div>
+    </header>
+
+    <main id="configuracoes" role="main" class="container">
+        <!-- Botão para voltar à página inicial -->
+        <div style="margin-bottom: 20px;">
+            <a href="../index.html" class="btn-opcao" style="display: inline-flex; width: auto; padding: 10px 20px;">
+                ⬅️ Voltar ao Início
+            </a>
+        </div>
+
+        <section class="container-modal" style="max-width: 100%; text-align: left; margin-bottom: 30px;">
+            <h2 style="margin-bottom: 20px; border-bottom: 2px solid var(--cor-primaria); padding-bottom: 10px;">
+                Ajustes de Visão e Contraste
+            </h2>
+            
+            <div class="grade-opcoes">
+                <!-- Controle de Alto Contraste -->
+                <button onclick="MotorVisual.alterarContraste()" class="btn-opcao">
+                    <span class="icone" aria-hidden="true">🌓</span> Alternar Alto Contraste
+                </button>
+
+                <!-- Controle de Daltonismo -->
+                <button onclick="MotorVisual.alternarDaltonismo()" class="btn-opcao">
+                    <span class="icone" aria-hidden="true">🎨</span> Modo Daltonismo (On/Off)
+                </button>
+            </div>
+        </section>
+
+        <section class="container-modal" style="max-width: 100%; text-align: left; margin-bottom: 30px;">
+            <h2 style="margin-bottom: 20px; border-bottom: 2px solid var(--cor-primaria); padding-bottom: 10px;">
+                Tamanho das Fontes (Texto)
+            </h2>
+            
+            <div class="grade-opcoes" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <!-- Controles de aumentar/diminuir tamanho -->
+                <button onclick="MotorVisual.alterarFonte('normal')" class="btn-opcao">
+                    <span class="icone" aria-hidden="true">🔍</span> Texto Normal
+                </button>
+                <button onclick="MotorVisual.alterarFonte('large')" class="btn-opcao">
+                    <span class="icone" aria-hidden="true">🔎</span> Texto Grande
+                </button>
+                <button onclick="MotorVisual.alterarFonte('xlarge')" class="btn-opcao">
+                    <span class="icone" aria-hidden="true">➕</span> Texto Muito Grande
+                </button>
+            </div>
+        </section>
+
+        <section class="container-modal" style="max-width: 100%; text-align: left; background-color: #FFEBEE;">
+            <h2 style="color: var(--cor-alerta); margin-bottom: 15px;">Redefinir Configurações</h2>
+            <p style="margin-bottom: 20px;">Deseja limpar todas as personalizações e voltar ao visual padrão da escola?</p>
+            <button onclick="limparTodasConfiguracoes()" class="btn-opcao" style="background-color: var(--cor-alerta); color: white; border: none;">
+                ❌ Limpar Tudo e Resetar
+            </button>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2026 Escola para Todos. Projeto de Inclusão Escolar.</p>
+        </div>
+    </footer>
+
+    <!-- Carregando scripts a partir da pasta pages/ -->
+    <script src="../js/audio.js"></script>
+    <script src="../js/motorVisual.js"></script>
+</body>
+</html>

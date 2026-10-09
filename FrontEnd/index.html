@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/acessibilidade.css">
 </head>
+
 <body>
 
     <!-- Link de atalho invisível (útil para navegação por teclado e leitores de tela) -->
@@ -38,13 +39,20 @@
         </div>
     </section>
 
-    <!-- SEÇÃO 2: O Portal Principal (Oculto inicialmente ou revelado após a escolha) -->
-    <header role="banner">
-        <div class="container">
-            <h1>Escola para Todos</h1>
-            <p class="subtitulo">Informação e acessibilidade para todos.</p>
-        </div>
-    </header>
+    <!-- ==========================================================================
+   CABEÇALHO ATUALIZADO COM ÁREA DO SERVIDOR
+   ========================================================================== -->
+<header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 20px 0; border-bottom: 2px solid var(--cor-fundo);">
+    <div>
+        <h1 style="margin: 0;">Escola para Todos</h1>
+        <p class="subtitulo" style="margin: 5px 0 0 0;">Informação e acessibilidade para todos.</p>
+    </div>
+    
+    <!-- Link acessível para a equipe escolar realizar autenticação -->
+    <a href="pages/login.html" class="btn-opcao" style="padding: 12px 24px; font-size: 0.95rem; text-decoration: none; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px;" aria-label="Acessar o painel administrativo restrito">
+        <span>🔐</span> Área do Servidor
+    </a>
+</header>
 
     <main id="conteudo-principal" role="main" class="container">
         
@@ -71,6 +79,10 @@
                 <span class="card-icone" aria-hidden="true">📢</span>
                 <span class="card-texto">Quadro de avisos</span>
             </a>
+            <a href="pages/materiais.html"class="card-link">
+                <span class="card-icone" aria-hidden="true">📚</span>
+                <span class="card-texto">Materiais</span>
+            </a>
             <a href="pages/ajuda.html" class="card-link card-alerta">
                 <span class="card-icone" aria-hidden="true">🆘</span>
                 <span class="card-texto">Preciso de ajuda</span>
@@ -80,7 +92,7 @@
                 <span class="card-texto">Personalizar acessibilidade</span>
             </a>
             <a href="pages/sobre.html" class="card-link card-secundario">
-                <span class="card-icone" aria-hidden="true">⚙️</span>
+                <span class="card-icone" aria-hidden="true">💡</span>
                 <span class="card-texto">Sobre nós</span>
             </a>
 

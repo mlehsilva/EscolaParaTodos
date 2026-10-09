@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Professor - Escola para Todos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+    <style>
+        .secao-professor {
+            background-color: var(--cor-superficie);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-top: 30px;
+            border: 3px solid transparent;
+        }
+        body.high-contrast .secao-professor {
+            border-color: var(--cor-secundaria);
+            background-color: var(--cor-fundo);
+        }
+        .form-grupo {
+            margin-bottom: 20px;
+        }
+        .form-grupo label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .input-controle, .select-controle {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #CFD8DC;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--fonte-principal);
+            background-color: var(--cor-superficie);
+            color: var(--cor-texto);
+        }
+        body.high-contrast .input-controle,
+        body.high-contrast .select-controle {
+            border-color: #FFFFFF;
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+        .alerta-acessibilidade {
+            background-color: #E3F2FD;
+            border-left: 5px solid var(--cor-primaria);
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        body.high-contrast .alerta-acessibilidade {
+            background-color: #121212;
+            border-left-color: var(--cor-secundaria);
+        }
+        .btn-acao {
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-acao:hover { background-color: #1565C0; }
+    </style>
+</head>
+<body>
+
+    <a href="#conteudo-professor" class="sr-only-focusable">Pular para o painel do professor</a>
+
+    <header style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; padding: 20px;">
+        <div>
+            <h1>Escola para Todos</h1>
+            <p class="subtitulo">Espaço do Educador</p>
+        </div>
+        <button class="btn-opcao" style="padding: 10px 20px; font-size: 0.9rem;" onclick="location.href='login.html'">Sair</button>
+    </header>
+
+    <main class="container" id="conteudo-professor">
+        <section class="secao-professor" aria-labelledby="titulo-upload">
+            <h2 id="titulo-upload" style="color: var(--cor-primaria); margin-bottom: 15px;">📚 Compartilhar Material Didático</h2>
+            
+            <div class="alerta-acessibilidade">
+                <p><strong>♿ Lembrete de Inclusão:</strong> Certifique-se de que os documentos textuais aceitem leitores de tela e insira links com suporte visual/áudio sempre que possível.</p>
+            </div>
+
+            <form id="form-upload-material">
+                <div class="form-grupo">
+                    <label for="nome-material">Nome do Material / Conteúdo:</label>
+                    <input type="text" id="nome-material" class="input-controle" placeholder="Ex: Exercícios de Matemática - Frações" required aria-required="true">
+                </div>
+
+                <div class="form-grupo">
+                    <label for="disciplina">Disciplina / Categoria:</label>
+                    <select id="disciplina" class="select-controle" required aria-required="true">
+                        <option value="">Selecione uma opção...</option>
+                        <option value="matematica">Matemática</option>
+                        <option value="portugues">Língua Portuguesa</option>
+                        <option value="ciencias">Ciências</option>
+                        <option value="historia">História / Geografia</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="url-material">Link do Arquivo ou Conteúdo (Google Drive, PDF, etc):</label>
+                    <input type="url" id="url-material" class="input-controle" placeholder="https://exemplo.com" required aria-required="true">
+                </div>
+
+                <div class="form-grupo">
+                    <label for="desc-material">Descrição em Texto Alternativo (Para estudantes com deficiência visual):</label>
+                    <input type="text" id="desc-material" class="input-controle" placeholder="Descreva brevemente o objetivo e o formato deste material" required aria-required="true">
+                </div>
+
+                <button type="submit" class="btn-acao">Disponibilizar Material</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Escola para Todos. Uploads sob monitoria pedagógica.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/audio.js"></script>
+    <script src="../js/motorVisual.js"></script>
+    <script src="../js/prof.js"></script>
+</body>
+</html>

@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Escola para Todos</title>
+    <!-- Importando seus arquivos globais de estilo -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <style>
+        /* Estilos específicos da tela de login integrados com suas variáveis */
+        .area-login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+        .card-login {
+            background-color: var(--cor-superficie);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 450px;
+            width: 100%;
+            border: 3px solid transparent;
+        }
+        /* Garantindo compatibilidade com seu modo Alto Contraste */
+        body.high-contrast .card-login {
+            border-color: var(--cor-secundaria);
+            background-color: var(--cor-fundo);
+        }
+        .grupo-formulario {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .grupo-formulario label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .input-padrao {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #CFD8DC;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--fonte-principal);
+            background-color: var(--cor-superficie);
+            color: var(--cor-texto);
+        }
+        body.high-contrast .input-padrao {
+            border-color: #FFFFFF;
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+        .btn-enviar {
+            width: 100%;
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-enviar:hover {
+            background-color: #1565C0;
+        }
+        /* Feedbacks de erro acessíveis */
+        .mensagem-erro {
+            background-color: var(--cor-alerta);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: none; /* Ativado via JavaScript */
+        }
+    </style>
+</head>
+<body>
 
+    <!-- Link de atalho invisível que se torna visível com Tab (seu padrão de acessibilidade) -->
+    <a href="#conteudo-principal" class="sr-only-focusable">Pular para o conteúdo de login</a>
+
+    <header>
+        <h1>Escola para Todos</h1>
+        <p class="subtitulo">Portal de Administração</p>
+    </header>
+
+    <main class="container area-login" id="conteudo-principal">
+        <section class="card-login" aria-labelledby="titulo-login">
+            <h2 id="titulo-login" class="container-modal h2" style="margin-bottom: 25px; text-align: center;">Acessar o Painel</h2>
+            
+            <!-- Recurso para leitores de tela capturarem alertas dinâmicos instantaneamente -->
+            <div id="erro-login" class="mensagem-erro" role="alert" aria-live="assertive"></div>
+
+            <form id="form-login" novalidate>
+                <div class="grupo-formulario">
+                    <label Packing for="usuario">E-mail ou Nome de Usuário:</label>
+                    <input type="text" id="usuario" class="input-padrao" required aria-required="true">
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" class="input-padrao" required aria-required="true">
+                </div>
+
+                <button type="submit" class="btn-enviar">Entrar no Sistema</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Escola para Todos. Desenvolvido para fins educacionais e acadêmicos.</p>
+    </footer>
+
+    <!-- Scripts de Acessibilidade existentes e o novo script de login -->
+    <script src="js/main.js"></script>
+    <script src="js/acessibilidade.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

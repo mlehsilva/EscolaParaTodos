@@ -4,108 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mural de Avisos - Escola para Todos</title>
-    <!-- Links apontando corretamente para a pasta css/ na raiz -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/acessibilidade.css">
     <link rel="stylesheet" href="../css/responsivo.css">
+    <style>
+        .grade-avisos { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 30px; }
+        .card-aviso { background-color: var(--cor-superficie); border: 3px solid transparent; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        body.high-contrast .card-aviso { border-color: var(--cor-secundaria); background-color: var(--cor-fundo); }
+        .tag-aviso { display: inline-block; background-color: #ECEFF1; color: var(--cor-texto); font-size: 0.85rem; font-weight: bold; padding: 4px 10px; border-radius: 4px; margin-bottom: 10px; text-transform: uppercase; }
+        .tag-importante { background-color: #FFEBEE; color: var(--cor-alerta); }
+        body.high-contrast .tag-importante { background-color: #000000; color: var(--cor-alerta); border: 1px solid var(--cor-alerta); }
+        .meta-aviso { margin: 15px 0; font-size: 0.95rem; color: #616161; }
+        body.high-contrast .meta-aviso { color: #FFFFFF; }
+        .btn-ouvir { background-color: #ECEFF1; color: #1A237E; border: 2px solid #CFD8DC; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 15px; display: inline-flex; align-items: center; gap: 5px; }
+        body.high-contrast .btn-ouvir { background-color: #000000; color: #FFFFFF; border-color: #FFFFFF; }
+        body.high-contrast .btn-ouvir:focus-visible { background-color: var(--cor-secundaria); color: #000000; }
+    </style>
 </head>
 <body>
 
-    <!-- Link de atalho rápido para acessibilidade por teclado -->
-    <a href="#mural-avisos" class="sr-only-focusable">Saltar para o mural de avisos</a>
+    <a href="#container-mural" class="sr-only-focusable">Saltar para o mural de avisos</a>
 
-    <header role="banner">
-        <div class="container">
-            <h1>Mural de Avisos</h1>
-            <p class="subtitulo">Fique por dentro dos comunicados e eventos da nossa escola.</p>
-        </div>
+    <header>
+        <h1>Mural de Avisos</h1>
+        <p class="subtitulo">Fique por dentro dos comunicados e eventos da nossa escola.</p>
     </header>
 
-    <main id="mural-avisos" role="main" class="container">
-        
-        <!-- Botão de Voltar para a Home -->
-        <div style="margin-bottom: 20px;">
-            <a href="../index.html" class="btn-opcao" style="display: inline-flex; width: auto; padding: 10px 20px;">
-                ⬅️ Voltar ao Início
-            </a>
+    <main class="container" style="margin-top: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="color: var(--cor-primaria);">📢 Comunicados Recentes</h2>
+            <button class="btn-opcao" style="padding: 10px 15px; font-size: 0.9rem;" onclick="location.href='../index.html'">⬅ Voltar ao Início</button>
         </div>
 
-        <!-- Grade de Cards de Avisos -->
-        <div style="display: flex; flex-direction: column; gap: 25px; margin-bottom: 50px;">
-            
-            <!-- CARD DE AVISO 1 -->
-            <article class="container-modal" style="max-width: 100%; text-align: left; position: relative;" aria-labelledby="titulo-aviso-1">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
-                    <div>
-                        <span style="font-size: 0.9rem; font-weight: bold; color: var(--cor-primaria); text-transform: uppercase;">📢 Comunicado Oficial</span>
-                        <h2 id="titulo-aviso-1" style="font-size: 1.6rem; color: var(--cor-texto); margin: 5px 0 10px 0;">Reunião de Pais e Mestres</h2>
-                    </div>
-                    <!-- Botão que ativa o leitor de áudio para este aviso específico -->
-                    <button onclick="MotorAudio.lerElemento('conteudo-aviso-1')" class="btn-opcao" style="width: auto; padding: 10px 15px;" aria-label="Ouvir comunicado sobre Reunião de Pais e Mestres">
-                        🔊 Ouvir Aviso
-                    </button>
-                </div>
-
-                <!-- Bloco de conteúdo que o script irá ler em voz alta -->
-                <div id="conteudo-aviso-1">
-                    <p style="margin-bottom: 15px; color: #555; font-weight: bold;">
-                        📅 Data: 15 de Outubro | 🕒 Horário: 19:00 | 📍 Local: Auditório Principal
-                    </p>
-                    <p>Convidamos todos os responsáveis para a nossa reunião do terceiro bimestre. Pautas principais: entrega de notas, calendário de eventos de fim de ano e projetos de inclusão digital.</p>
-                </div>
-            </article>
-
-            <!-- CARD DE AVISO 2 -->
-            <article class="container-modal" style="max-width: 100%; text-align: left; position: relative;" aria-labelledby="titulo-aviso-2">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
-                    <div>
-                        <span style="font-size: 0.9rem; font-weight: bold; color: #E65100; text-transform: uppercase;">🎨 Evento Cultural</span>
-                        <h2 id="titulo-aviso-2" style="font-size: 1.6rem; color: var(--cor-texto); margin: 5px 0 10px 0;">Feira de Ciências e Tecnologia</h2>
-                    </div>
-                    <button onclick="MotorAudio.lerElemento('conteudo-aviso-2')" class="btn-opcao" style="width: auto; padding: 10px 15px;" aria-label="Ouvir comunicado sobre Feira de Ciências">
-                        🔊 Ouvir Aviso
-                    </button>
-                </div>
-
-                <div id="conteudo-aviso-2">
-                    <p style="margin-bottom: 15px; color: #555; font-weight: bold;">
-                        📅 Data: 22 e 23 de Outubro | 🕒 Horário: 08:00 às 17:00 | 📍 Local: Quadra Poliesportiva
-                    </p>
-                    <p>Venha prestigiar os projetos desenvolvidos pelos nossos estudantes. Este ano, todos os estandes contam com maquetes táteis e QR Codes com audiodescrição para garantir a visitação de toda a comunidade.</p>
-                </div>
-            </article>
-
-            <!-- CARD DE AVISO 3 (Alerta/Urgente) -->
-            <article class="container-modal card-alerta" style="max-width: 100%; text-align: left; position: relative; border-left: 6px solid var(--cor-alerta);" aria-labelledby="titulo-aviso-3">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
-                    <div>
-                        <span style="font-size: 0.9rem; font-weight: bold; color: var(--cor-alerta); text-transform: uppercase;">⚠️ Atenção</span>
-                        <h2 id="titulo-aviso-3" style="font-size: 1.6rem; color: var(--cor-alerta); margin: 5px 0 10px 0;">Manutenção no Elevador do Bloco B</h2>
-                    </div>
-                    <button onclick="MotorAudio.lerElemento('conteudo-aviso-3')" class="btn-opcao" style="width: auto; padding: 10px 15px;" aria-label="Ouvir alerta sobre manutenção do elevador">
-                        🔊 Ouvir Alerta
-                    </button>
-                </div>
-
-                <div id="conteudo-aviso-3">
-                    <p style="margin-bottom: 15px; color: #555; font-weight: bold;">
-                        📅 Período: 08 a 10 de Outubro | 📍 Local: Bloco B
-                    </p>
-                    <p>Informamos que o elevador do Bloco B passará por manutenção preventiva. Estudantes e funcionários com mobilidade reduzida terão suas atividades temporariamente realocadas para as salas do andar térreo.</p>
-                </div>
-            </article>
-
+        <div id="container-mural" class="grade-avisos" aria-live="polite">
+            <!-- Renderizado dinamicamente via API -->
         </div>
     </main>
 
-    <footer role="contentinfo">
-        <div class="container">
-            <p>&copy; 2026 Escola para Todos. Projeto de Inclusão Escolar.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Escola para Todos. Projeto de Inclusão Escolar.</p>
     </footer>
 
-    <!-- Scripts necessários para o funcionamento e persistência dos estilos -->
-    <script src="../js/audio.js"></script>
-    <script src="../js/motorVisual.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/acessibilidade.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const mural = document.getElementById("container-mural");
+            try {
+                const resposta = await fetch("http://localhost:3000/api/avisos");
+                if (!resposta.ok) throw new Error();
+                const avisos = await resposta.json();
+
+                if (avisos.length === 0) {
+                    mural.innerHTML = "<p>Nenhum comunicado ativo no momento.</p>";
+                    return;
+                }
+
+                mural.innerHTML = avisos.map(aviso => {
+                    const dataFormatada = new Date(aviso.data_postagem).toLocaleDateString('pt-BR');
+                    return `
+                        <article class="card-aviso" aria-labelledby="tit-${aviso.id}">
+                            <span class="tag-aviso tag-importante">📢 Comunicado</span>
+                            <h3 id="tit-${aviso.id}" style="font-size: 1.6rem; margin-bottom: 5px;">${aviso.titulo}</h3>
+                            <button class="btn-ouvir" onclick="ouvirTexto('texto-${aviso.id}')">🔊 Ouvir Aviso</button>
+                            <div id="texto-${aviso.id}">
+                                <p class="meta-aviso">📅 Publicado em: ${dataFormatada}</p>
+                                <p>${aviso.conteudo}</p>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+            } catch (erro) {
+                mural.innerHTML = "<p style='color:var(--cor-alerta);'>Erro ao carregar avisos do servidor.</p>";
+            }
+        });
+
+        function ouvirTexto(idElemento) {
+            const containerTexto = document.getElementById(idElemento);
+            if (containerTexto && window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+                const enunciado = new SpeechSynthesisUtterance(containerTexto.innerText);
+                enunciado.lang = 'pt-BR';
+                window.speechSynthesis.speak(enunciado);
+            }
+        }
+    </script>
 </body>
 </html>

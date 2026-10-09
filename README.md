@@ -159,11 +159,11 @@ O projeto é desenvolvido utilizando metodologias ágeis com um sistema baseado 
 * **Tema:** Inclusão e acessibilidade digital  
 
 * Maria Letícia da Silva (Líder de projeto)
-* Integrante 2 (Função/Responsabilidade)
-* Integrante 3 (Função/Responsabilidade)
-* Integrante 4 (Função/Responsabilidade)
-* Integrante 5 (Função/Responsabilidade)
-* Integrante 6 (Função/Responsabilidade)
+* Guilherme Santana da Silva (Documentador)
+* Joallyson Guilherme da Silva Marques (Programador)
+* Felipe Vinicius de Lima Noronha (Programador)
+* Pedro Gabriel Silva Siqueira (Programador)
+* Arthur Vinícius Miranda César de Melo (Desing UI/UX)
 
 ---
 

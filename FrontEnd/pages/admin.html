@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Administrador - Escola para Todos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        @media (min-width: 768px) {
+            .dashboard-container { grid-template-columns: 2fr 1fr; }
+        }
+        .secao-painel {
+            background-color: var(--cor-superficie);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 3px solid transparent;
+        }
+        body.high-contrast .secao-painel {
+            border-color: var(--cor-secundaria);
+            background-color: var(--cor-fundo);
+        }
+        .form-grupo {
+            margin-bottom: 20px;
+        }
+        .form-grupo label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .input-controle, .textarea-controle {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #CFD8DC;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--fonte-principal);
+            background-color: var(--cor-superficie);
+            color: var(--cor-texto);
+        }
+        body.high-contrast .input-controle,
+        body.high-contrast .textarea-controle {
+            border-color: #FFFFFF;
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+        .btn-acao {
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-acao:hover { background-color: #1565C0; }
+        .btn-deslogar {
+            background-color: var(--cor-alerta);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#conteudo-admin" class="sr-only-focusable">Pular para o painel de administração</a>
+
+    <header style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; padding: 20px;">
+        <div>
+            <h1>Escola para Todos</h1>
+            <p class="subtitulo">Painel Geral do Administrador</p>
+        </div>
+        <button class="btn-deslogar" onclick="fazerLogout()">Sair do Sistema</button>
+    </header>
+
+    <main class="container dashboard-container" id="conteudo-admin">
+        <!-- Coluna da Esquerda: Formulário de Avisos -->
+        <section class="secao-painel" aria-labelledby="titulo-novo-aviso">
+            <h2 id="titulo-novo-aviso" style="color: var(--cor-primaria); margin-bottom: 20px;">📢 Publicar Novo Aviso no Mural</h2>
+            <form id="form-novo-aviso">
+                <div class="form-grupo">
+                    <label for="titulo-aviso">Título do comunicado:</label>
+                    <input type="text" id="titulo-aviso" class="input-controle" required aria-required="true">
+                </div>
+                <div class="form-grupo">
+                    <label for="conteudo-aviso">Texto do Aviso (Texto limpo para leitura de voz):</label>
+                    <textarea id="conteudo-aviso" rows="5" class="textarea-controle" required aria-required="true"></textarea>
+                </div>
+                <button type="submit" class="btn-acao">Adicionar ao Mural</button>
+            </form>
+        </section>
+
+        <!-- Coluna da Direita: Status e Lista de Exclusão -->
+        <aside class="secao-painel" aria-labelledby="titulo-status">
+            <h2 id="titulo-status" style="font-size: 1.4rem; margin-bottom: 15px;">Resumo do Sistema</h2>
+            <p style="margin-bottom: 15px;"><strong>Avisos Ativos:</strong> Carregando...</p>
+    
+            <hr style="margin: 20px 0; border: 1px solid #ECEFF1;">
+    
+            <h3 style="font-size: 1.2rem; margin-bottom: 15px;">🗑️ Gerenciar / Apagar Avisos</h3>
+            <!-- O JavaScript vai renderizar a lista com botões de apagar aqui dentro -->
+            <div id="lista-controle-avisos" style="display: flex; flex-direction: column; gap: 10px;" aria-live="polite"></div>
+
+            <hr style="margin: 20px 0; border: 1px solid #ECEFF1;">
+            <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Links de Acesso</h3>
+            <a href="mapa.html" class="btn-opcao" style="font-size: 0.9rem; padding: 10px; margin-bottom: 10px; text-decoration: none;">Ver Mapa da Escola</a>
+        </aside>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Escola para Todos. Controle Administrativo restrito.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/acessibilidade.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        function fazerLogout() {
+            localStorage.removeItem("escola_todos_token");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
